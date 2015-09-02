@@ -12,7 +12,6 @@ end
 
 def check_guess(guess, answer)
   i = 0
-  high_low = ''
   input = ''
   while i != 5 && input != answer
     input = gets.chomp.to_i
@@ -22,18 +21,10 @@ def check_guess(guess, answer)
     elsif guess.include?(input)
       puts "You must be a goldfish.  You already guessed #{input}.  Try again, you fishy fish."
       system('say "so fishy"')
-    elsif input > answer && high_low == 'high'
-      puts "I said guess lower than #{guess.min}, not higher."
-      high_low = ''
     elsif input > answer
       puts "#{input} is too high, try a lower number."
-      high_low = 'high'
-    elsif input < answer && high_low == 'low'
-      puts "I said guess higher than #{guess.max}, not lower."
-      high_low = ''
     elsif input < answer
       puts "#{input} is too low, try a higher number."
-      high_low = 'low'
     else
       puts "Wrong turn."
       break
