@@ -1,5 +1,5 @@
 class Employee
-  def initialize(name, email, phone, salary, review)
+  def initialize(name, email, phone, salary, review = "")
     @name = name
     @email = email
     @phone = phone
