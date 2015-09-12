@@ -27,6 +27,8 @@ class EmployeeReviewsTest < Minitest::Test
   end
 
   def test_get_department_name
+    dept = Department.new("Print Ops")
+    assert "Print Ops" == dept.name
   end
 
   def test_get_total_salary
