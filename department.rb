@@ -25,4 +25,12 @@ class Department
     end
     false
   end
+
+  def get_dept_salary
+    tot_salary = 0
+    @employees.each do |x|
+      tot_salary += x.salary
+    end
+    tot_salary != 0 ? tot_salary : false
+  end
 end
