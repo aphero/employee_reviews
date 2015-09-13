@@ -44,4 +44,16 @@ class Department
       return x.name == name ? x.review : false
     end
   end
+
+  def set_sat(name)
+    @employees.each do |x|
+      x.name == name ? x.sat = true : false
+    end
+  end
+
+  def get_sat(name)
+    @employees.each do |x|
+      return x.name == name ? x.sat : false
+    end
+  end
 end

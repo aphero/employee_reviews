@@ -51,6 +51,10 @@ class EmployeeReviewsTest < Minitest::Test
   end
 
   def test_is_employee_good_08
+    dept = Department.new("Customer Service")
+    emp = dept.add_employee("David", "dwoodward@spoonflower.com", "919-234-4567", 50000)
+    dept.set_sat("David")
+    assert dept.get_sat("David") == true
   end
 
   def test_give_employee_raise_09
