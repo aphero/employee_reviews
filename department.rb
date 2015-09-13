@@ -45,9 +45,9 @@ class Department
     end
   end
 
-  def set_sat(name)
+  def set_sat(name, tf)
     @employees.each do |x|
-      x.name == name ? x.sat = true : false
+      x.name == name ? x.sat = tf : !tf
     end
   end
 
@@ -56,4 +56,15 @@ class Department
       return x.name == name ? x.sat : false
     end
   end
+
+  def give_raise(name, up)
+    @employees.each do |x|
+      if x.name == name  && x.sat == true
+        x.salary = x.salary * up
+      else
+        return false
+      end
+    end
+  end
+
 end

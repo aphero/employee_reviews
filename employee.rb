@@ -1,14 +1,14 @@
 require "./department.rb"
 
 class Employee
-  attr_reader :name, :email, :phone, :salary
-  attr_accessor :review, :sat
+  attr_reader :name, :email, :phone
+  attr_accessor :review, :sat, :salary
 
   def initialize(name, email, phone, salary, review: '')
     @name = name
     @email = email
     @phone = phone
     @salary = salary
-    @raise = false
+    @sat = false
   end
 end
