@@ -19,11 +19,10 @@ class Department
     false
   end
 
-  def get_employee_salary
+  def get_employee_salary(name)
     @employees.each do |x|
-      return x.salary
+      return x.name == name ? x.salary : false
     end
-    false
   end
 
   def get_dept_salary
@@ -32,5 +31,17 @@ class Department
       tot_salary += x.salary
     end
     tot_salary != 0 ? tot_salary : false
+  end
+
+  def add_review(name, review)
+    @employees.each do |x|
+      x.name == name ? x.review = review : false
+    end
+  end
+
+  def get_review(name)
+    @employees.each do |x|
+      return x.name == name ? x.review : false
+    end
   end
 end
