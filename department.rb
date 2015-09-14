@@ -59,7 +59,7 @@ class Department
 
   def give_raise(name, up)
     @employees.each do |x|
-      if x.name == name  && x.sat == true
+      if x.name == name && x.sat == true
         x.salary = x.salary * up
       else
         return false
@@ -67,4 +67,15 @@ class Department
     end
   end
 
+  def give_dept_raises(amount)
+    good_emp = @employees.reject { |e| e.sat == false}
+    dole = amount/@employees.length
+    @employees.each do |x|
+      if x.name == name && x.sat == true
+        x.salary = x.salary + dole
+      else
+        return false
+      end
+    end
+  end
 end
