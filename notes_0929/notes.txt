@@ -1,0 +1,18 @@
+rails new .
+will create a new rails directory in the current folder instead of building a new directory.
+
+Things that are happening:
+Give me localhost:3000
+  Router decides times#search
+  times#search action does nothing
+  search.html.erb is rendered
+I see search form
+I submit form to localhost:3000/times/results
+  Router decides times#results
+  times#results sets @selected_zone
+  results.html.erb is rendered using the instance variable
+I see rendered page
+
+when using form_tag you have to switch your route to POST
+
+if route is times/search you can use times_search_path behind form_tag to always refer to that route in views

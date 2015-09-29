@@ -1,0 +1,8 @@
+Response Codes
+100's - Info
+200's - Success
+300's - Redirect
+400's - Bad Request
+500's - Server Error
+
+http.cat

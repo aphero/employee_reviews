@@ -1,0 +1,44 @@
+CREATE to create tables with columns
+INSERT rows into tables
+SELECT to query
+UPDATE
+DELETE
+
+Gems needed:
+sqlite3
+activerecord
+
+Migration
+Base
+
+All of the following are methods on Class objects unless otherwise specified.
+
+CREATE inherits from ActiveRecord::Migration
+INSERT, SELECT, UPDATE and DELETE inherit from ActiveRecord::Base
+
+INSERT uses
+.new to make things in memory
+.save to store in database (call on an instance variable, or Object type)
+.create to make both memory and database entries
+
+SELECT uses
+.find(<that thing's id>)
+.where(<field name>: <value>) returns a relation (sort of an array) of records.
+.order(<field name>)
+can be keyword: value or "field <cond> value"
+.to_sql will give you the SQL query command
+.limit
+can get
+object.field_name
+object.related_objects
+
+UPDATE
+object.field_name = <string>
+object.save
+object.update(hash)
+
+OTHERS
+.first to get first record
+.all gets all records
+
+AlbumMigration::Migrate(:down) kills the database

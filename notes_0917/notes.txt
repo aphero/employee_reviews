@@ -1,0 +1,59 @@
+def change is used for up and down processes
+create_table has an opposite that will delete the table
+add_column
+remove_column
+
+using:
+
+def setup
+  print "SETUP!"
+end
+
+The "setup" method runs code before each test in your Minitest.
+
+You can also use another method that you can call specifically inside of tests.
+
+ActiveRecord::Migration.verbose = false
+will suppress the migration descriptions in terminal
+
+validates :name, uniqueness: true
+ensures that name is unique
+
+validates :salary, presence: true
+ensures that salary is entered
+
+this      returns this    with !
+.save   | true/false    | exception
+.create | Object        | exception
+
+If we destroy Departments
+1. Orphaned Employees - default
+2. Deleted Employees - must put "has_many :employees, dependent: :destroy"
+3. TOO BAD -
+    dependent: :restrict_with_error       # Stop program with error
+    dependent: :restrict_with_exception   # Crashes with exception error
+
+- has_and_belongs_to_many -
+
+create_join_table :committees, :employees
+
+e = Employee.create(name: "David", salary: -1000)
+c = Committee.create(name: "Get Josh Rich Committee")
+
+e.committees << c  ## Assign GJRC to David
+
+c.employees << e  ## Assign David to committee
+
+c.employees.delete(e) ## to remove David from the committee
+
+A school has many terms, and each terms has many courses.
+Ask school for courses.  How do?
+
+Back to Dept, Emp, Rev:
+create_table :reviews do |t|
+  t.references :employee
+  t.text :body
+end
+
+on Department
+has_many :reviews, through: :employees

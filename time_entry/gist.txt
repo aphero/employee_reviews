@@ -1,0 +1,38 @@
+#1 Find all time entries.
+SELECT * FROM time_entries ORDER BY worked_on DESC;
+500 rows returned
+
+#2 Find the developer who joined the company most recently.
+SELECT * FROM developers ORDER BY joined_on DESC LIMIT 1;
+"34"	"Dr. Danielle McLaughlin"	"shakira.carter@kohler.org"	"2015-07-10"	"2015-07-14 16:15:19.224045"	"2015-07-14 16:15:19.224045"
+
+#3 Find the number of projects for each client.
+SELECT COUNT(p.name) AS 'projects', c.name
+FROM clients c JOIN projects p
+WHERE c.id = p.client_id
+GROUP BY p.client_id, c.name;
+10 rows returned
+
+#4 Find all projects, and show each one's company's industry next to it.
+SELECT p.name, c.industry FROM projects p JOIN clients c WHERE c.id = p.client_id ORDER BY p.name;
+30 rows returned
+
+#5 Find all developers in the "Ohio sheep" group.
+SELECT d.name, g.name FROM developers d, group_assignments ga, groups g WHERE g.name = "Ohio sheep" AND d.id = ga.developer_id AND g.id = ga.group_id GROUP BY d.name;
+3 rows returned
+
+#6 Find the total number of hours worked for each company.
+SELECT c.name, SUM(t.duration) 'total_hours' FROM clients c, time_entries t, projects p WHERE p.id = t.project_id AND c.id = p.client_id GROUP BY c.name;
+10 rows returned
+
+#7 Find the client for whom Mrs. Lupe Schowalter (the developer) has worked the greatest number of hours.
+SELECT d.name, c.name, SUM(t.duration) hours FROM developers d, time_entries t, projects p, clients c WHERE d.name = 'Mrs. Lupe Schowalter' AND d.id = t.developer_id AND t.project_id = p.id AND p.client_id = c.id GROUP BY p.client_id ORDER BY hours DESC LIMIT 1;
+"Mrs. Lupe Schowalter"	"Kuhic-Bartoletti"	"11"
+
+#8 List all client names with their project names (multiple rows for one client is fine). Make sure that clients still show up even if they have no projects.
+SELECT c.name, p.name FROM projects p, clients c WHERE c.id = p.client_id  ORDER BY c.name;
+30 rows returned
+
+#9 Find all developers who have written no comments.
+SELECT d.name, d.id, c.comment FROM developers d LEFT JOIN comments c ON d.id = c.developer_id WHERE c.comment IS NULL;
+13 rows returned

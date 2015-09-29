@@ -1,0 +1,13 @@
+How to API
+
+The Web is the collection of pages stored at URL addresses
+The Internet is the collection of computers that run the web.
+
+using JSON, like here: (JavaScript Object Notation)
+https://api.github.com/users/masonfmatthews/events
+stores data as arrays and objects in Javascript format
+
+JSON, XML or CSV can be used to transmit data
+
+
+Put your wunderground key into a file called .profile in the HOME folder.

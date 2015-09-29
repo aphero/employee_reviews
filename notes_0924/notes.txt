@@ -1,0 +1,118 @@
+CMD + T : opens fuzzy finder so you can search for the file you need.
+
+You can use seeds.rb under the db folder to create database records.
+
+rake db:drop to destroy the database
+rake db:seed processes seed file
+rake db:migrate migrates the database (makes it ready to roll)
+rake db:setup creates all tables and runs seeds
+
+to get a new column for access tokens run a new migration
+
+"rails g migration AddTokenToVoters" and then manually add in "add_column :voters, :token, :string"
+adding columns to an old migration works, but is not good practice when working with other developers
+
+securerandomhex to create tokens
+
+we were supposed to use url parameters for all of the actions, where you thought that wasn't the way (like a fool) USE ALL THE THINGS YOU KNOW EVEN IF THEY MIGHT NOT SEEM RIGHT!
+
+Using seeds and Faker to make a random data:
+
+start_time = Time.now
+
+1000.times do |i|
+  puts "Done with #{i} Deparments." if i % 100 == 0
+  Department.create!(name: Faker::Company.name + rand(1000000).to_s)
+end
+
+all_departments = Department.all
+10000.times do |i|
+  puts "Done with #{i} Employees" if i % 100 == 0
+  Employee.create!(name: Faker::Name.name + rand(1000000).to_s,
+                   salary: rand(10000..100000),
+                   department: all_deparments.sample)
+end
+
+puts "Took #{Time.now - start_time} seconds."
+
+And in the controller
+
+View from controller and back and then to the router and viewer
+
+<%= you can do Ruby here %>
+
+When a browser requests an action it will look for a render in a controller.  If it doesn't find one it will choose the appropriate view file.
+
+you can add jbuilder to the final extension
+
+json.name("Mason")
+json.hometown "Burmeblandtonsborough"
+
+use instance variables to pass information between controllers and views.
+
+json.name @department.id
+json.hometown @department.name
+json.number_of_employees @department.employees.count or @department.number_of_employees
+json.total_salary @department.total_salary
+
+OR you can do this:
+
+json.extract! @department, :id, :name, :number_of_employees, :total_salary
+
+json.employees @department.employees do |help| ### json.employees means that "employees" will be used as the label.
+  json.extract! help, :id, :name, :salary
+end
+
+AND add
+
+def number_of_employees
+  employees.count
+end
+
+def total_salary
+  employees.sum &:salary # or
+  employees.reduce(0.0) { |sum, e| sum + e.salary}
+end
+
+<pig.rb>
+class Pig
+  att_reader :snout_length, :tastiness
+
+  def initialize(snout_length, tastiness)
+    @snout_length = snout_length
+    @tastiness = tastiness
+  end
+
+  def snort
+    "Oink" * snout_length
+  end
+
+  def get_eaten
+    ("Bacon! " * tastiness).strip   # .strip will remove trailing whitespace
+  end
+end
+
+<show.json.jbuilder>
+json.snout_length @pig.snout_length
+json.snort @pig.snort
+json.get_eaten @pig.get_eaten
+
+<controller.rb>
+class Controller
+  def show
+    @pig = Pig.new(params[:snout], params[:tastiness])
+  end
+end
+
+all variables passed by url parameters as labeled in controller
+
+Headers can be passed as a hash in your GET request.  Goes in your model file.
+
+response = HTTParty.get(<address>, headers: { "Key" => "value, "Key" => "value"})
+
+Level 0: "root 'controller#action'"
+Level 1: "get 'controller/action'"
+Level 2: "get 'anyname' => 'controller#action'
+Level 3: "get 'unicorns/:id' => "unicorns#show"   # Can have other things added behind ":id" as well.  Like dis:  unicorns/:id/crazy_monkeys
+
+get 'api/v1/unicorns' => 'unicorns#index'

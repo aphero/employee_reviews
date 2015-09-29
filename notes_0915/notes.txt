@@ -1,0 +1,27 @@
+sqlite.org/lang.html
+
+sqlite3 <database> < <sql code> to open a database in SQLite and push sql source input into it.
+SELECT <fields> FROM <table>
+* denotes all, like usual
+don't forget ; behind command lines
+WHERE to specify a value to search for
+OR to specify another value
+% denotes wildcard
+ORDER BY to order by a field column.  Can use several fields to order by. ie - "ORDER BY state, city"
+put DESC after value to print in descending order
+OFFSET - start at an offset record position
+LIMIT - only show a limited set of data
+INNER JOIN - specify which table to join, part of FROM
+ON - specify which id to join on
+FROM - specify which table to select from
+You can use shorthand table names by using the first few letters (or just first letter) of the table.  ie - "curricula cu"
+GROUP BY
+AS
+FROM to choose table
+SELECT cu.title, COUNT(*) AS count FROM curricula cu LEFT JOIN courses co ON co.curriculum_id = cu.id WHERE cu.title != 'Python' GROUP BY cu.title HAVING count > 1 ORDER BY count DESC LIMIT 1;
+HAVING -
+
+Good ways of keeping up on shiny objects;
+- Ruby Rogues podcast
+- meet ups
+- Ruby Weekly

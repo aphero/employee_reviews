@@ -1,0 +1,62 @@
+rails new
+rails server
+rails generate and rails destroy
+  - model
+  - migration
+  - controller
+rake db:migrate
+rake db:rollback
+rake db:drop
+rails console
+rails test
+rake routers
+
+GET - idempotent.  use me when you don't need to change anything.
+POST - can't see me.  used for login credentials.  will create form resubmission dialog if attempting to reload.  USE THIS FOR create voter AND create vote.
+PATCH - USE THIS FOR update voter
+DELETE - USE THIS FOR destroy vote
+PUT
+
+Get familiar with routes.rb in the config folder.
+
+Here's a thing in config/routes.rb:
+
+    get 'employees/show' -- in the
+
+And then, in employees_controller.rb:
+
+    def show
+      id = params[:id]
+      render json: Employee.find(id).to_json
+    end
+
+App Flow:
+User interacts with
+Router, then
+Controller, then
+Model, then
+Database
+and then back again.
+
+Here's another thing in config/routes.rb:
+
+    delete 'employees/destroy'
+
+And then, in employees_controller.rb:
+
+    def destroy
+      id = params[:id]
+      Employee.find(id).destroy
+      render json: "Cold-hearted"
+    end
+
+TESTING OPTIONS:
+assert param
+assert_equal param1, param2
+assert_raises { block }
+assert_response
+assert response.body....
+
+How to auth token:
+use a random hex generator to supply token
+check to ensure that the token hasn't been supplied yet.

@@ -1,0 +1,17 @@
+<h1>GiV3 M3 y0Ur ZoN3z</h1>
+
+<% var = 3 %> <!-- Ruby code to be hidden -->
+
+<%= "potatos " * var %> <!-- Ruby code to be put on screen -->
+
+<%= form_tag times_results_path, class: "theclass" do %> <!-- Ruby code to be put on screen -->
+  <select name="zone">
+    <option value=4>Eastern</option>
+    <option value=5>Central</option>
+    <option value=6>Mountain</option>
+    <option value=7>Pacific</option>
+  </select>
+  <%= select_tag :zone, options_for_select([["Eastern", 4], ["Central", 5], ["Mountain", 6], ["Pacific", 7]]) %>
+
+  <%= submit_tag "Find my time!", {class: "thebutton"} %>
+<% end %> <!-- Ruby code to be hidden -->

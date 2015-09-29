@@ -1,0 +1,63 @@
+OMG IT'S RAILS TIME!
+
+Inheritance "IS A"
+
+Composition "HAS A"
+
+Modules "ACTS LIKE A"
+
+@array.select(&:odd?)
+
+CMD: rails new <folder name>
+Creates the following folder structure:
+
+app
+  assets
+  controllers
+  helpers
+  mailers
+  models
+  views
+bin
+config
+db              db.sqlite3
+  migrate       migration files
+lib
+log
+public
+test
+tmp
+vendor
+
+CMD: rails server
+Brings up server information for you to use.  Must run while in the folder you created above.
+
+MVC model
+Model > Database
+View > User (HTML, CSS, JSON, etc)
+Controller > handles communication between user and DB
+
+CMD: rails generate model Employee name:string email:string salary:float department_id:integer
+Will create an Employee DB with key:type fields
+
+CMD: rails generate migration
+
+
+CMD: rails destroy
+To blow things up
+
+CMD: rake db:migrate
+Will default to migrating up.
+
+CMD: rake db:rollback
+Will migrate down, but only one iteration.
+
+CMD: rails console (or rails c)
+Basically replaces irb.
+
+CMD: rake
+Runs tests
+
+CMD: rails generate controller <name>
+
+"render json: Employee.all.to_json" will put all fields into json format
